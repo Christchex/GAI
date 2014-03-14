@@ -1,0 +1,2 @@
+This library is available under the GNU General Public License v3.
+The full text for this is avaiable at http://www.gnu.org/licenses/gpl-3.0.html.
