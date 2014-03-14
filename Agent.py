@@ -1,4 +1,3 @@
-<A* Goes Here>
 
 function A*(start,goal)
     closedset := the empty set    // The set of nodes already evaluated.
