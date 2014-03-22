@@ -1,36 +1,70 @@
-function A*(start,goal)
-    closedset := the empty set    // The set of nodes already evaluated.
-    openset := {start}    // The set of tentative nodes to be evaluated, initially containing the start node
-    came_from := the empty map    // The map of navigated nodes.
- 
-    g_score[start] := 0    // Cost from start along best known path.
-    // Estimated total cost from start to goal through y.
-    f_score[start] := g_score[start] + heuristic_cost_estimate(start, goal)
- 
-    while openset is not empty
-        current := the node in openset having the lowest f_score[] value
-        if current = goal
+
+
+def agent(self, start, goal):
+    closed = []
+    openset = [start]
+    came_from =  []
+    gscore = 0
+    while(openset != []):
+        current = getClosest()
+        if current = goal:
             return reconstruct_path(came_from, goal)
- 
-        remove current from openset
-        add current to closedset
-        for each neighbor in neighbor_nodes(current)
-            if neighbor in closedset
+        openset.remove(current)
+        closed.append(current)
+        neighbors[] = get_neighbors(current)
+        for(s in neighbors):
+            if(s in closed):
                 continue
-            tentative_g_score := g_score[current] + dist_between(current,neighbor)
- 
-            if neighbor not in openset or tentative_g_score < g_score[neighbor] 
-                came_from[neighbor] := current
-                g_score[neighbor] := tentative_g_score
-                f_score[neighbor] := g_score[neighbor] + heuristic_cost_estimate(neighbor, goal)
-                if neighbor not in openset
-                    add neighbor to openset
- 
-    return failure
- 
-function reconstruct_path(came_from, current_node)
-    if current_node in came_from
-        p := reconstruct_path(came_from, came_from[current_node])
-        return (p + current_node)
-    else
-        return current_node
+            temp_gscore = gscore + dist(current, s)
+            elif(!s in openset or temp_gscore < gscore):
+                gscore = temp_gscore
+                came_from.append(current)
+                if(!s in openset):
+                    openset.append(s)
+    print("Did it work?")
+    return came_from
+
+                
+                
+        
+        
+        
+#returns the Fscore of the given point    
+def getF(point):
+    return gscore + dist(point, goal)
+
+
+#Returns the point with the lowest F score in Openset
+def getClosest():
+    
+    lowest = openset[0]
+    value = getF(lowest)
+    for(s in openset):
+        if(dist(s,goal) < value):
+            lowest = s
+            value = getF(lowest)
+    return lowest
+
+
+
+#returns the distance between two points
+def dist(point, goal):
+    return (goal - point)
+    
+def reachable(node):
+    return True
+    #
+
+def get_neighbors(point):
+    #returns list of neighbors
+    
+    
+                            
+def main(self):
+
+
+    
+    
+if __name__ == "__main__":
+    main()
+
