@@ -1,4 +1,6 @@
 {
   "type": "ant",
-  "image": "../assets/img/ant.png"
+  "image": "../assets/img/ant.png",
+  "moveSpeed": 10,
+  "health": 50
 }
